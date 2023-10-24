@@ -29,4 +29,13 @@ public class GameService {
 
         return filteredElements;
     }
+
+    public List<ElementInfo> getOnlyTwoGames() {
+        List<ElementInfo> filteredElements = getFilteredElements();
+
+        int startIndex = 0;
+        int endIndex = 2;
+
+        return filteredElements.subList(startIndex, endIndex);
+    }
 }

@@ -17,7 +17,7 @@ public class GameController {
 
     @GetMapping
     public List<ElementInfo> getFilteredGames() {
-        return gameService.getFilteredElements();
+        return gameService.getOnlyTwoGames();
     }
 
 }
