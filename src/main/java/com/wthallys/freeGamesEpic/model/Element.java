@@ -9,4 +9,5 @@ public class Element {
     private Price price;
     private String title;
     private String description;
+    private String offerType;
 }

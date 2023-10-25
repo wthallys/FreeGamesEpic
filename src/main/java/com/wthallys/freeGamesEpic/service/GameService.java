@@ -24,7 +24,7 @@ public class GameService {
 
         List<ElementInfo> filteredElements = elements.stream()
                 .filter(element -> "0".equals(element.getPrice().getTotalPrice().getFmtPrice().getIntermediatePrice()))
-                .map(element -> new ElementInfo(element.getTitle(), element.getDescription()))
+                .map(element -> new ElementInfo(element.getTitle(), element.getDescription(), element.getOfferType()))
                 .collect(Collectors.toList());
 
         return filteredElements;
