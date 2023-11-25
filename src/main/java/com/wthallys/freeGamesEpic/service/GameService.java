@@ -20,16 +20,17 @@ public class GameService {
         String url = "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions?locale=pt-BR&country=BR&allowCountries=BR";
         GameData gameData = restTemplate.getForObject(url, GameData.class);
 
+        assert gameData != null;
         List<Element> elements = gameData.getData().getCatalog().getSearchStore().getElements();
 
-        List<ElementInfo> filteredElements = elements.stream()
+        return elements.stream()
                 .filter(element -> "0".equals(element.getPrice().getTotalPrice().getFmtPrice().getIntermediatePrice()))
                 .map(element -> new ElementInfo(element.getTitle(), element.getDescription(), element.getOfferType()))
                 .collect(Collectors.toList());
 
-        return filteredElements;
     }
 
+    //No longer necessary
     public List<ElementInfo> getOnlyTwoGames() {
         List<ElementInfo> filteredElements = getFilteredElements();
 
