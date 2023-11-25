@@ -1,6 +1,6 @@
 package com.wthallys.freeGamesEpic.controller;
 
-import com.wthallys.freeGamesEpic.model.ElementInfo;
+import com.wthallys.freeGamesEpic.model.ElementDTO;
 import com.wthallys.freeGamesEpic.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping
-    public List<ElementInfo> getFilteredGames() {
+    public List<ElementDTO> getFilteredGames() {
         return gameService.getFilteredElements();
     }
 
