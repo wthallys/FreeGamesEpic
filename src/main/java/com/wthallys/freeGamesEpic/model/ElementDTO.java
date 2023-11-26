@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ElementInfo {
+public class ElementDTO {
     private String title;
     private String description;
     private String offerType;
