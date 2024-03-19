@@ -5,12 +5,8 @@ import com.wthallys.freeGamesEpic.model.ElementDTO;
 import com.wthallys.freeGamesEpic.model.GameData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.UnknownHostException;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
