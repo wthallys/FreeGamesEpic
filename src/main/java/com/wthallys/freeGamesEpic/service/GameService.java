@@ -17,7 +17,8 @@ public class GameService {
     RestTemplate restTemplate;
 
     public List<ElementDTO> getFilteredElements() {
-        String url = "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions?locale=pt-BR&country=BR&allowCountries=BR";
+        String url = System.getenv("URL");
+
         GameData gameData = restTemplate.getForObject(url, GameData.class);
 
         assert gameData != null;
@@ -28,15 +29,5 @@ public class GameService {
                 .map(element -> new ElementDTO(element.getTitle(), element.getDescription(), element.getOfferType()))
                 .collect(Collectors.toList());
 
-    }
-
-    //No longer necessary
-    public List<ElementDTO> getOnlyTwoGames() {
-        List<ElementDTO> filteredElements = getFilteredElements();
-
-        int startIndex = 0;
-        int endIndex = 2;
-
-        return filteredElements.subList(startIndex, endIndex);
     }
 }
