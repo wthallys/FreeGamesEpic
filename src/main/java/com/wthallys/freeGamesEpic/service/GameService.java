@@ -5,8 +5,12 @@ import com.wthallys.freeGamesEpic.model.ElementDTO;
 import com.wthallys.freeGamesEpic.model.GameData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.UnknownHostException;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +21,8 @@ public class GameService {
     RestTemplate restTemplate;
 
     public List<ElementDTO> getFilteredElements() {
-        String url = "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions?locale=pt-BR&country=BR&allowCountries=BR";
+        String url = System.getenv("URL");
+
         GameData gameData = restTemplate.getForObject(url, GameData.class);
 
         assert gameData != null;
@@ -28,15 +33,5 @@ public class GameService {
                 .map(element -> new ElementDTO(element.getTitle(), element.getDescription(), element.getOfferType()))
                 .collect(Collectors.toList());
 
-    }
-
-    //No longer necessary
-    public List<ElementDTO> getOnlyTwoGames() {
-        List<ElementDTO> filteredElements = getFilteredElements();
-
-        int startIndex = 0;
-        int endIndex = 2;
-
-        return filteredElements.subList(startIndex, endIndex);
     }
 }
