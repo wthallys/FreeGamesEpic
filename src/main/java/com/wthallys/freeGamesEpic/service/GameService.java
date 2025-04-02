@@ -25,7 +25,10 @@ public class GameService {
         List<Element> elements = gameData.getData().getCatalog().getSearchStore().getElements();
 
         return elements.stream()
-                .filter(element -> "0".equals(element.getPrice().getTotalPrice().getFmtPrice().getIntermediatePrice()))
+                .filter(element ->
+                        "0".equals(element.getPrice().getTotalPrice().getFmtPrice().getIntermediatePrice()) &&
+                                !element.getTitle().contains("Mystery Game")
+                )
                 .map(element -> new ElementDTO(element.getTitle(), element.getDescription(), element.getOfferType()))
                 .collect(Collectors.toList());
 
